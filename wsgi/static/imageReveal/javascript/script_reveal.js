@@ -124,6 +124,16 @@ function load_image() {
     var img = document.getElementById("full_pic");
     // console.log(img.width + ' ' + img.height);
 
+    var notloaded = true;
+    while (notloaded) {
+        if ((typeof img.naturalWidth) != "undefined") {
+            if (img.naturalWidth > 0) {
+                notloaded = false;
+                console.log('image loaded! ' + img.naturalWidth);
+            }
+        }
+    }
+
     // draw the image to hidden canvas
     hidden_canvas.width = canv.width;
     hidden_canvas.height = canv.height;
