@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="UTF-8"> 
+
+{% load staticfiles %}
+
+<html>
+    <head>
+        <title>The Great Image Reveal</title>
+        <link rel="stylesheet" href="{% static 'imageReveal/css/style.css' %}">
+    </head>
+    <body>
+        {% block nav %}
+            <div class="nav">
+                <ul>
+                    <li>{% block nav-home %}<a href="{% url 'imageReveal:index' %}">Home</a>{% endblock %}</li>
+                    <li>{% block nav-hof %}<a href="{% url 'imageReveal:index' %}">High Scores</a>{% endblock %}</li>
+                    <div class='title_string'>image reVEAL</div>
+                </ul>
+            </div>
+        {% endblock %}
+        <div class="page">
+            {% block content %}
+            {% endblock %}
+            <br class="clear" />
+        </div>
+    </body>
+</html>

@@ -1,0 +1,59 @@
+{% extends 'imageReveal/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="centre_block">
+        <table>
+            <tr>
+                <td>
+                    <div class="menu_block">
+                        <pre class="score_pre"><span id="score_label">  Pot: <span id="score">1000</span></span></pre>
+                        <pre><span id="counter_label">  Time: <span id="counterdown">04:00</span></span></pre>
+                        <pre><span id="points_label">Score: <span id="points">0000</span></span></pre>
+                        <button class="red_button" id="red_button" onclick="add_colour('red')">MORE</button>
+                        <button class="green_button" id="red_button" onclick="add_colour('green')">PLUS</button>
+                        <button class="blue_button" id="red_button" onclick="add_colour('blue')">MEHR</button>
+                    </div>
+                </td>
+                <td>
+                    <canvas id="the_pic" class="image" width=300 height=300></canvas>
+                </td>
+                <td>
+                    <div class="clue_block">
+                        <p>{{ clue_text }} ({{ clue_length }})</p>
+                        <pre id='clue_blanks'></pre>
+                        <button class="letter_button" id="letter_button" onclick="get_letter()">Letter Hint</button>
+                        <textarea rows=2 id="answer" placeholder="answer"
+                                                     onkeydown="checkAnswer(event,'{{ clue_answer }}');"></textarea>
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <form name="next_clue_or_end" action="{% url 'imageReveal:clue' %}" method="POST">
+        {% csrf_token %}
+        <input type="hidden" id="clue_id" name="last_clue_id" value="{{ clue_id }}"/>
+        <input type="hidden" id="total_points" name="total_points" value="{{ total_points }}"/>
+    </form>
+
+    {% with 'imageReveal/images/'|add:image_file as image_static %}
+        <img id="full_pic" class="hidden_img" src="{% static image_static %}"/>
+    {% endwith %}
+
+    <script type="text/javascript" src="{% static 'imageReveal/javascript/script_reveal.js' %}"></script>
+    <script type="text/javascript" src="{% static 'imageReveal/javascript/script_timer.js' %}"></script>
+    <script type="text/javascript" src="{% static 'imageReveal/javascript/script_clue.js' %}"></script>
+    <script type="text/javascript" src="{% static 'imageReveal/javascript/game_flow.js' %}"></script>
+
+    <script type="text/javascript">
+        startTimer(240);
+        load_image();
+        init_clue_block("{{ clue_answer }}");
+        setClueBlanksElement();
+        updatePoints({{ total_points }});
+    </script>
+
+{% endblock %}
+

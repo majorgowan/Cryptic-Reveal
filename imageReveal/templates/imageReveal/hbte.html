@@ -1,0 +1,26 @@
+{% extends 'imageReveal/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="centre_block">
+        <p class="bigbigline">Hippo Birdie Two Ewes!!!</p>
+        <p class="bigline">.&nbsp;.&nbsp;.&nbsp; and many happy returns!!</p>
+        <br><br>
+        <p>
+            <pre><span id="points_label">Score: <span id="points">{{ points }}</span></span></pre>
+        </p>
+    </div>
+    <audio id="my_sound">
+        <source src="{% static 'music_jazz_blues_happy_birthday_NifterDotCom.wav' %}"
+                type="audio/wav"/>
+        <source src="{% static 'imageReveal/sounds/File_Good_Morning_to_All.ogg' %}"
+                type="audio/ogg"/>
+    </audio>
+    <script type='text/javascript'>
+        window.setTimeout(function() {
+            document.getElementById("my_sound").play();
+        }, 2000);
+    </script>
+{% endblock %}
+

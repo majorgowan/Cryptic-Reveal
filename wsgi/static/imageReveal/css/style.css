@@ -1,0 +1,271 @@
+body {
+    font-family: sans-serif; 
+    background: #eee; 
+}
+
+a, h1, h2 { 
+    color: #377ba8; 
+}
+h1, h2 { 
+    font-family: 'Georgia', serif; 
+    margin: 0.5em; 
+}
+h1 { 
+    border-bottom: 2px solid #eee; 
+}
+h2 { 
+    font-size: 1.2em; 
+}
+
+/* navigation bar */
+/* from http://css-snippets.com/simple-horizontal-navigation/ */
+.nav ul {
+    list-style: none;
+    background-color: #444;
+    text-align: left;
+    padding: 0;
+    margin: 0;
+}
+.nav li {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.2em;
+    line-height: 40px;
+    height: 40px;
+    border-bottom: 1px solid #888;
+}
+.nav a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    transition: .3s background-color;
+}
+.nav a:hover {
+    background-color: #005f5f;
+}
+.nav a.active {
+    background-color: #fff;
+    color: #444;
+    cursor: default;
+}
+.title_string {
+    float: right;
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    line-height: 50px;
+    height: 50px;
+    margin-right: 0.5em;
+    color: #fff;
+}   
+@media screen and (min-width: 600px) {
+    .nav li {
+        border-bottom: none;
+        height: 50px;
+        line-height: 50px;
+        font-size: 1.4em;
+        text-align: center;
+    }
+    /* Option 1 - Display Inline */
+    .nav li {
+        display: inline-block;
+        width: 7em;
+    }
+    /* Options 2 - Float
+    .nav li {
+    float: left;
+    }
+    .nav ul {
+    overflow: auto;
+    width: 600px;
+    margin: 0 auto;
+    }
+    .nav {
+    background-color: #444;
+    }  */
+}
+
+/* Index/instructions */
+.bigline {
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.bigbigline {
+    text-align: center;
+    font-size: 1.7em;
+    font-weight: bold;
+}
+.red_text {
+    color: #aa3333;
+    font-weight: bold;
+}
+.blue_text {
+    color: #3333aa;
+    font-weight: bold;
+}
+.lets_go_line {
+    text-align: center;
+}
+.lets_go {
+    font: bold 1.8em Arial;
+    text-decoration: none;
+    background-color: #eeeeee;
+    color: #333333;
+    padding: 5px 9px 5px 9px;
+    border-top: 1px solid #cccccc;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #cccccc;
+}
+
+
+/* The image */
+.image {
+    padding: 10px;
+    margin: 5px auto;
+    display: table-cell;
+    vertical-align: middle;
+    border: 5px solid #555555;
+}
+/* The menu */
+.menu_block {
+    width: 20%;
+    display: table-cell;
+    vertical-align: middle;
+}
+#score_label {
+    width: 80%;
+    font-size: 2.3em;
+    text-align: center;
+}
+.score_pre {
+    padding-bottom: 14px;
+}
+#points_label {
+    width: 80%;
+    font-size: 2.3em;
+    text-align: center;
+}
+#counter_label {
+    width: 80%;
+    font-size: 2.3em;
+    text-align: center;
+}
+.menu_block button {
+    display: inline-block;
+    position: relative;
+    width: 80%;
+    font-size: 1.8em;
+    text-align: center;
+    padding: 4px;
+    margin: 5px auto;
+}
+.red_button {
+    color: #660000;
+    background-color: #ff2222;
+}
+.green_button {
+    color: #006600;
+    background-color: #22ff22;
+}
+.blue_button {
+    color: #000066;
+    background-color: #2222ff;
+}
+
+/* The clue */
+.clue_block {
+    width: 30%;
+    display: table-cell;
+    vertical-align: middle;
+}
+.clue_block p {
+    font-size: 1.5em;
+}
+.clue_block button {
+    display: inline-block;
+    position: relative;
+    width: 80%;
+    font-size: 1.4em;
+    text-align: center;
+    padding: 4px;
+    margin: 10px auto;
+}
+#clue_text {
+    font-size: 1.5em;
+}
+#answer {
+    font-size: 2em;
+    width: 80%;
+    resize: none;
+    text-align: center;
+}
+#clue_blanks {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    overflow: auto;
+    font-size: 2em;
+    text-align: center;
+    width: 5em;
+}
+
+/* The hidden image */
+.hidden_img {
+    display: none;
+}
+
+.centre_div {
+    width: 100%;
+    text-align: center;
+}
+.centre_div form input {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+.centre_div button {
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 1em;
+    font-size: 1.5em;
+}
+.centre_div p {
+    margin: 0;
+    font-size: 1.8em;
+    font-weight: bold;
+    margin-left: 1em;
+}
+
+/* table formatting */
+.centre_div table {
+    border-collapse: collapse;
+    width: 100%;
+}
+.centre_div th, td {
+    text-align: center;
+    padding: 8px;
+}
+.centre_div tr {
+    background-color: #f2f2f2;
+}
+.centre_div th {
+    background-color: #377ba8; 
+    color: white;
+}
+.centre_div table table th, table table td {
+    font-size: 0.8em;
+}
+
+.page { 
+    margin: 2em auto; 
+    width: 600pt; 
+    height: 100%;
+    border: 7px solid #ccc; 
+    padding: 0.8em; 
+    background: white; 
+}
+.clear {
+    clear: both;
+}
+
