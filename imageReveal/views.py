@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.utils import timezone
 from django.core.urlresolvers import reverse
 
-from .models import Clue
+from .models import Clue, Game
 
 from .forms import HiddenClueForm
 
@@ -18,6 +18,14 @@ def hbte(request):
             'points': total_points,
             }
     return render(request, 'imageReveal/hbte.html', context)
+
+def highscores(request):
+    instances = Game.objects.order_by('-user_score').all()[:5]
+    zipadee = [(inst.user_score, inst.user_name, inst.user_location, inst.date) for inst in instances] 
+    context = {
+            'zipadee': zipadee,
+            }
+    return render(request, 'imageReveal/highscores.html', context)
 
 def serveClue(request):
     form = HiddenClueForm()

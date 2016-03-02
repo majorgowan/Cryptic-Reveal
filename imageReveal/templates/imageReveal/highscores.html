@@ -1,0 +1,34 @@
+{% extends 'imageReveal/base.html' %}
+
+{% load staticfiles %}
+
+{% block content %}
+    <div class="centre_div">
+        <p class="table_heading">Hall of Fame</p>
+        <table>
+            <tr>
+                <th>Score</th>
+                <th>Playa</th>
+                <th>Location</th>
+                <th>Time (UTC)</th>
+            </tr>
+            {% for score, name, location, date in zipadee %}
+                <tr>
+                    <td>
+                        {{ score }}
+                    </td>
+                    <td>
+                        {{ name }}
+                    </td>
+                    <td>
+                        {{ location }}
+                    </td>
+                    <td>
+                        {{ date }}
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+

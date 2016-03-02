@@ -21,7 +21,7 @@ class Game(models.Model):
     date = models.DateTimeField('date of game')
 
     def __str_(self):
-        return str(self.user_name) + ' ' + str(self.date)
+        return self.user_name + ' ' + str(self.date)
 
 
 
