@@ -131,23 +131,10 @@ function prepare_image() {
     // get image source
     img_src = document.getElementById("full_pic").src;
 
-<<<<<<< HEAD
-    console.log('image naturalWidth: ' + img.naturalWidth);
-    var notloaded = true;
-    while (notloaded) {
-        if ((typeof img.naturalWidth) != "undefined") {
-            if (img.naturalWidth > 0) {
-                notloaded = false;
-                console.log('image loaded! ' + img.naturalWidth);
-            }
-        }
-    }
-=======
     // get image from img tag in html and then prepare canvas etc.
     load_image(img_src, function() {
             img = document.getElementById("full_pic");
             console.log('image naturalWidth: ' + img.naturalWidth);
->>>>>>> e7eeac82ba4f91aa20e2cfa1669749ccc24f19d3
 
             // draw the image to hidden canvas
             hidden_canvas.width = canv.width;
