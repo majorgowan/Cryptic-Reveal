@@ -6,8 +6,9 @@ function startTimer(duration) {
     var display = document.getElementById("counterdown");
     var timer = duration, minutes, seconds;
 
-    var remaining_periods = 24-1;
+    var remaining_periods = 48-1;
     var period = Math.floor(duration/(remaining_periods+1)); 
+    console.log('remaining_periods, period = ' + remaining_periods + ', ' + period);
 
     focusAnswer();
 
@@ -20,16 +21,17 @@ function startTimer(duration) {
 
         display.textContent = minutes + ":" + seconds;
 
+        console.log('  remaining_periods, period = ' + remaining_periods + ', ' + period);
+        if (timer <= remaining_periods*period) {
+            remaining_periods--;
+            updateScore(-10);
+            console.log('time penalty!')
+        }
         timer -= 5;
         if (timer < 1) {
             stopTimer();
             display.textContent = "----";
             gameOver(false);
-        }
-        if (timer <= remaining_periods*period) {
-            remaining_periods--;
-            updateScore(-20);
-            console.log('time penalty!')
         }
 
     }, 5000);

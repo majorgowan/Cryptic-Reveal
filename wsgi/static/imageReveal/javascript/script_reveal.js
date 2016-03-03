@@ -50,9 +50,9 @@ function add_colour(colour_name) {
 function colourFull() {
     for (var ipixel = 0; ipixel < red.length; ipixel++) {
         if ((green[ipixel] > green_full[ipixel]) || 
-                (blue[ipixel] > blue_full[ipixel]) ||
-                (red[ipixel] > red_full[ipixel]) ||
-                (alpha[ipixel] > alpha_full[ipixel])) {
+            (blue[ipixel] > blue_full[ipixel]) ||
+            (red[ipixel] > red_full[ipixel]) ||
+            (alpha[ipixel] > alpha_full[ipixel])) {
             return false;
         }
     }
@@ -72,12 +72,12 @@ function revealStep(step) {
 function fullReveal(step, delay, callback) {
     var counter = 0;
     var myRevealer = setInterval( function() {
-        revealStep(step);
-        if ((colourFull()) || (++counter > 100)) {
-            clearInterval(myRevealer);
-            callback();
-        }
-    }, delay);
+            revealStep(step);
+            if ((colourFull()) || (++counter > 100)) {
+                clearInterval(myRevealer);
+                callback();
+            }
+        }, delay);
 }
 
 function clearCanvas() {
@@ -124,13 +124,19 @@ function load_image() {
     var img = document.getElementById("full_pic");
     // console.log(img.width + ' ' + img.height);
 
+    console.log('image naturalWidth: ' + img.naturalWidth);
     var notloaded = true;
-    while (notloaded) {
-        if ((typeof img.naturalWidth) != "undefined") {
-            if (img.naturalWidth > 0) {
-                notloaded = false;
-                console.log('image loaded! ' + img.naturalWidth);
-            }
+    for (var itry = 0; itry < 10; itry++) {
+        if (notloaded) {
+            window.setTimeout(function() {
+                    if ((typeof img.naturalWidth) != "undefined") {
+                        if (img.naturalWidth > 0) {
+                            notloaded = false;
+                            console.log('image loaded! ' + img.naturalWidth);
+                        }
+                    }
+                },50);
+            console.log('image naturalWidth: ' + img.naturalWidth);
         }
     }
 
