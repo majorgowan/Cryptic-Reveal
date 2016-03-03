@@ -111,7 +111,15 @@ function drawCanvas() {
     return 0;
 }
 
-function load_image() {
+
+function load_image(img_src, callback) {
+    img = new Image();
+    img.onload = callback;
+    img.src = img_src;
+}
+
+
+function prepare_image() {
 
     // create a hidden canvas and get its context 
     var hidden_canvas = document.createElement('canvas');
@@ -120,48 +128,37 @@ function load_image() {
     // target picture
     var canv = document.getElementById("the_pic");
 
-    // get image from img tag in html
-    var img = document.getElementById("full_pic");
-    // console.log(img.width + ' ' + img.height);
+    // get image source
+    img_src = document.getElementById("full_pic").src;
 
-    console.log('image naturalWidth: ' + img.naturalWidth);
-    var notloaded = true;
-    for (var itry = 0; itry < 10; itry++) {
-        if (notloaded) {
-            window.setTimeout(function() {
-                    if ((typeof img.naturalWidth) != "undefined") {
-                        if (img.naturalWidth > 0) {
-                            notloaded = false;
-                            console.log('image loaded! ' + img.naturalWidth);
-                        }
-                    }
-                },50);
+    // get image from img tag in html and then prepare canvas etc.
+    load_image(img_src, function() {
+            img = document.getElementById("full_pic");
             console.log('image naturalWidth: ' + img.naturalWidth);
-        }
-    }
 
-    // draw the image to hidden canvas
-    hidden_canvas.width = canv.width;
-    hidden_canvas.height = canv.height;
-    hidden_context.drawImage(img, 0, 0 );
+            // draw the image to hidden canvas
+            hidden_canvas.width = canv.width;
+            hidden_canvas.height = canv.height;
+            hidden_context.drawImage(img, 0, 0 );
 
-    // extract image data from context of hidden canvas
-    myData = hidden_context.getImageData(0, 0, canv.width, canv.height);
+            // extract image data from context of hidden canvas
+            myData = hidden_context.getImageData(0, 0, canv.width, canv.height);
 
-    var counter = 0;
-    for (var ipixel = 0; ipixel < myData.data.length; ipixel += 4) {
-        red_full[counter] = myData.data[ipixel];
-        green_full[counter] = myData.data[ipixel+1];
-        blue_full[counter] = myData.data[ipixel+2];
-        alpha_full[counter] = myData.data[ipixel+3];
+            var counter = 0;
+            for (var ipixel = 0; ipixel < myData.data.length; ipixel += 4) {
+                red_full[counter] = myData.data[ipixel];
+                green_full[counter] = myData.data[ipixel+1];
+                blue_full[counter] = myData.data[ipixel+2];
+                alpha_full[counter] = myData.data[ipixel+3];
 
-        red[counter] = 255;
-        green[counter] = 255;
-        blue[counter] = 255;
-        alpha[counter] = 255;
+                red[counter] = 255;
+                green[counter] = 255;
+                blue[counter] = 255;
+                alpha[counter] = 255;
 
-        counter += 1;
-    }
+                counter += 1;
+            }
 
-    drawCanvas();
+            drawCanvas();
+        });
 }

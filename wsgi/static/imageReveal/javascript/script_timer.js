@@ -8,7 +8,6 @@ function startTimer(duration) {
 
     var remaining_periods = 48-1;
     var period = Math.floor(duration/(remaining_periods+1)); 
-    console.log('remaining_periods, period = ' + remaining_periods + ', ' + period);
 
     focusAnswer();
 
@@ -21,7 +20,6 @@ function startTimer(duration) {
 
         display.textContent = minutes + ":" + seconds;
 
-        console.log('  remaining_periods, period = ' + remaining_periods + ', ' + period);
         if (timer <= remaining_periods*period) {
             remaining_periods--;
             updateScore(-10);
