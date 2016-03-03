@@ -20,16 +20,16 @@ function startTimer(duration) {
 
         display.textContent = minutes + ":" + seconds;
 
+        if (timer <= remaining_periods*period) {
+            remaining_periods--;
+            updateScore(-10);
+            console.log('time penalty!')
+        }
         timer -= 5;
         if (timer < 1) {
             stopTimer();
             display.textContent = "----";
             gameOver(false);
-        }
-        if (timer <= remaining_periods*period) {
-            remaining_periods--;
-            updateScore(-10);
-            console.log('time penalty!')
         }
 
     }, 5000);
