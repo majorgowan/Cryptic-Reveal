@@ -124,6 +124,7 @@ function load_image() {
     var img = document.getElementById("full_pic");
     // console.log(img.width + ' ' + img.height);
 
+    console.log('image naturalWidth: ' + img.naturalWidth);
     var notloaded = true;
     while (notloaded) {
         if ((typeof img.naturalWidth) != "undefined") {
