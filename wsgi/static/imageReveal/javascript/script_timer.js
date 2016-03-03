@@ -6,7 +6,7 @@ function startTimer(duration) {
     var display = document.getElementById("counterdown");
     var timer = duration, minutes, seconds;
 
-    var remaining_periods = 8-1;
+    var remaining_periods = 24-1;
     var period = Math.floor(duration/(remaining_periods+1)); 
 
     focusAnswer();
@@ -26,9 +26,9 @@ function startTimer(duration) {
             display.textContent = "----";
             gameOver(false);
         }
-        if (timer < remaining_periods*period) {
+        if (timer <= remaining_periods*period) {
             remaining_periods--;
-            updateScore(-100);
+            updateScore(-20);
             console.log('time penalty!')
         }
 

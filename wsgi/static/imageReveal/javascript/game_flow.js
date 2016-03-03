@@ -53,7 +53,7 @@ function gameOver(success) {
             document.getElementById("total_points").value = "" + total_points;
             console.log(document.getElementById("total_points").value);
             document.forms["next_clue_or_end"].submit();
-        },2500);
+        },2000);
     });
 }
 

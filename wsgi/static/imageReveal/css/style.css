@@ -87,13 +87,15 @@ h2 {
 /* Index/instructions */
 .bigline {
     text-align: center;
-    font-size: 1.3em;
     font-weight: bold;
+    font-size: 1.7em;
+    color: #377ba8;
 }
 .bigbigline {
     text-align: center;
-    font-size: 1.7em;
+    font-size: 2.5em;
     font-weight: bold;
+    color: #000000;
 }
 .red_text {
     color: #aa3333;
